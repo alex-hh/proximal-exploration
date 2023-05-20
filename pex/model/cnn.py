@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
-from . import torch_model, register_model
+from pex.model import torch_model, register_model
+
 
 class CNN(nn.Module):
     """
@@ -35,6 +36,7 @@ class CNN(nn.Module):
         x = self.dropout_1(x)
         x = self.dense_3(x)
         return x
+
 
 @register_model("cnn")
 class ConvolutionalNetworkModel(torch_model.TorchModel):

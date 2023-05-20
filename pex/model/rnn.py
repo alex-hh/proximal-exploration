@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
-from . import torch_model, register_model
+from pex.model import torch_model, register_model
+
 
 class RNN(nn.Module):
     """

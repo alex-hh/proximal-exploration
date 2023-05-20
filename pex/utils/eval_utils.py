@@ -2,6 +2,7 @@ import time
 import numpy as np
 import pandas as pd
 
+
 class Runner:
     """
         The interface of landscape/model/explorer is compatible with FLEXS benchmark.

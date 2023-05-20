@@ -1,10 +1,12 @@
 import numpy as np
 
+
 ensemble_rules = {
     'mean': lambda x: np.mean(x, axis=0),
     'lcb': lambda x: np.mean(x, axis=0) - np.std(x, axis=0),
     'ucb': lambda x: np.mean(x, axis=0) + np.std(x, axis=0)
 }
+
 
 class Ensemble:
     def __init__(self, models, ensemble_rule):

@@ -4,7 +4,8 @@ import torch
 import torch.nn as nn
 import numpy as np
 from sequence_models.structure import Attention1d
-from . import register_landscape
+from pex.landscape import register_landscape
+
 
 class Decoder(nn.Module):
     def __init__(self, input_dim=1280, hidden_dim=512):
@@ -23,6 +24,7 @@ class Decoder(nn.Module):
         x = self.dense_4(x)
         return x
 
+
 class ESM1b_Attention1d(nn.Module):
     def __init__(self):
         super().__init__()
@@ -36,6 +38,7 @@ class ESM1b_Attention1d(nn.Module):
         x = self.encoder(x, repr_layers=[33], return_contacts=False)["representations"][33]
         x = self.decoder(x)
         return x
+
 
 @register_landscape("esm1b")
 class ESM1b_Landscape:

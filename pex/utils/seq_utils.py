@@ -2,8 +2,10 @@ import torch
 import torch.nn.functional as F
 import numpy as np
 
+
 def hamming_distance(seq_1, seq_2):
     return sum([x!=y for x, y in zip(seq_1, seq_2)])
+
 
 def random_mutation(sequence, alphabet, num_mutations):
     wt_seq = list(sequence)
@@ -12,6 +14,7 @@ def random_mutation(sequence, alphabet, num_mutations):
         wt_seq[idx] = alphabet[np.random.randint(len(alphabet))]
     new_seq = ''.join(wt_seq)
     return new_seq
+
 
 def sequence_to_one_hot(sequence, alphabet):
     # Input:  - sequence: [sequence_length]
@@ -22,6 +25,7 @@ def sequence_to_one_hot(sequence, alphabet):
     one_hot = F.one_hot(torch.tensor([alphabet_dict[x] for x in sequence]).long(), num_classes=len(alphabet))
     return one_hot
 
+
 def sequences_to_tensor(sequences, alphabet):
     # Input:  - sequences: [batch_size, sequence_length]
     #         - alphabet:  [alphabet_size]
@@ -30,6 +34,7 @@ def sequences_to_tensor(sequences, alphabet):
     one_hots = torch.stack([sequence_to_one_hot(seq, alphabet) for seq in sequences], dim=0)
     one_hots = torch.permute(one_hots, [0, 2, 1]).float()
     return one_hots
+
 
 def sequences_to_mutation_sets(sequences, alphabet, wt_sequence, context_radius):
     # Input:  - sequences:          [batch_size, sequence_length]

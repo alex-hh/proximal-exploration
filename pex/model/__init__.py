@@ -1,6 +1,6 @@
 import os
 import importlib
-from .ensemble import Ensemble
+from pex.model.ensemble import Ensemble
 
 model_collection = {}
 

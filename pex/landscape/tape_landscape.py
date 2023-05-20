@@ -3,7 +3,8 @@ import json
 import tape
 import torch
 import numpy as np
-from . import register_landscape
+from pex.landscape import register_landscape
+
 
 @register_landscape("tape")
 class TAPE_Landscape:

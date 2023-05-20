@@ -1,8 +1,9 @@
 import torch
 import torch.nn as nn
 import numpy as np
-from . import torch_model, register_model
-from utils.seq_utils import sequences_to_mutation_sets
+from pex.model import torch_model, register_model
+from pex.utils.seq_utils import sequences_to_mutation_sets
+
 
 class MuFacNet(nn.Module):
     """
@@ -41,6 +42,7 @@ class MuFacNet(nn.Module):
         set_embeddings = torch.sum(element_embeddings, dim=1)
         predictions = self.joint_effect_decoder(set_embeddings)
         return predictions
+
 
 @register_model("mufacnet")
 class MutationFactorizationModel(torch_model.TorchModel):
